@@ -42,11 +42,8 @@ MCU_AVRDUDE = atmega16u2
 
 # Specify the Arduino model using the assigned PID.  This is used by Descriptors.c
 #   to set PID and product descriptor string
-# Uno PID:
-ARDUINO_MODEL_PID = 0x0001
-# Mega 2560 PID:
-#ARDUINO_MODEL_PID = 0x0010
-
+USB_VID = 0x0001
+USB_PID = 0x0001
 
 # Target board (see library "Board Types" documentation, NONE for projects not requiring
 # LUFA board drivers). If USER is selected, put custom board drivers in a directory called
@@ -179,7 +176,8 @@ CSTANDARD = -std=gnu99
 # Place -D or -U options here for C sources
 CDEFS  = -DF_CPU=$(F_CPU)UL
 CDEFS += -DF_CLOCK=$(F_CLOCK)UL
-CDEFS += -DARDUINO_MODEL_PID=$(ARDUINO_MODEL_PID)
+CDEFS += -DUSB_VID=$(USB_VID)
+CDEFS += -DUSB_PID=$(USB_PID)
 CDEFS += -DBOARD=BOARD_$(BOARD)
 CDEFS += $(LUFA_OPTS)
 CDEFS += -DAVR_RESET_LINE_PORT="PORTD"
