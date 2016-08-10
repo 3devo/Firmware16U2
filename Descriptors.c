@@ -201,28 +201,26 @@ const USB_Descriptor_String_t PROGMEM LanguageString =
  *  form, and is read out upon request by the host when the appropriate string ID is requested, listed in the Device
  *  Descriptor.
  */
+#define MANUFACTURER_STRING L"3Devo BV (www.3devo.eu)"
 const USB_Descriptor_String_t PROGMEM ManufacturerString =
 {
-	.Header                 = {.Size = USB_STRING_LEN(24), .Type = DTYPE_String},
+	.Header                 = {.Size = USB_STRING_LEN(sizeof(MANUFACTURER_STRING)/sizeof(wchar_t)), .Type = DTYPE_String},
 
-	.UnicodeString          = L"Arduino (www.arduino.cc)"
+	.UnicodeString          = MANUFACTURER_STRING
 };
 
 /** Product descriptor string. This is a Unicode string containing the product's details in human readable form,
  *  and is read out upon request by the host when the appropriate string ID is requested, listed in the Device
  *  Descriptor.
  */
+#define STRINGIFY(x) XSTRINGIFY(x)
+#define XSTRINGIFY(x) #x
+#define PRODUCT_STRING L"Next 1.0 filament extruder (" STRINGIFY(SKU) ")"
 const USB_Descriptor_String_t PROGMEM ProductString =
 {
-	#if (ARDUINO_MODEL_PID == ARDUINO_UNO_PID)
-		.Header                 = {.Size = USB_STRING_LEN(11), .Type = DTYPE_String},
+	.Header                 = {.Size = USB_STRING_LEN(sizeof(PRODUCT_STRING)/sizeof(wchar_t)), .Type = DTYPE_String},
 
-		.UnicodeString          = L"Arduino Uno"
-	#elif (ARDUINO_MODEL_PID == ARDUINO_MEGA2560_PID)
-		.Header                 = {.Size = USB_STRING_LEN(17), .Type = DTYPE_String},
-
-		.UnicodeString          = L"Arduino Mega 2560"
-	#endif
+	.UnicodeString          = PRODUCT_STRING
 
 };
 
