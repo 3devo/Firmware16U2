@@ -42,8 +42,8 @@ MCU_AVRDUDE = atmega16u2
 
 # Specify the Arduino model using the assigned PID.  This is used by Descriptors.c
 #   to set PID and product descriptor string
-USB_VID = 0x0001
-USB_PID = 0x0001
+USB_VID = 0x16D0
+USB_PID = 0x0C5B
 SKU = FEN1V1R
 #SKU = FEN1V1A
 
