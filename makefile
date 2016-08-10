@@ -299,6 +299,14 @@ AVRDUDE_PORT = usb
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 #AVRDUDE_WRITE_EEPROM = -U eeprom:w:$(TARGET).eep
 
+# Low power crystal oscillator 8-16Mhz, 16K CK + 65ms
+# SPIEN, BOOTSZ=4096bytes, BODLEVEL=4.3V
+#
+# Compared to Arduino defaults, BODLEVEL is raised from 3.0 and HWBE is
+# disabled. Startup delay could perhaps be reduced to 16K CK + 0ms, but
+# this was not tested.
+AVRDUDE_FUSES = -U lfuse:w:0xFF:m -U hfuse:w:0xD9:m -U efuse:w:0xF8:m
+
 # Increase verbosity level.  Please use this when submitting bug
 # reports about avrdude. See <http://savannah.nongnu.org/projects/avrdude>
 # to submit bug reports.
@@ -309,6 +317,7 @@ AVRDUDE_FORCE = -F
 AVRDUDE_FLAGS = -p $(MCU_AVRDUDE) -P $(AVRDUDE_PORT) -c $(AVRDUDE_PROGRAMMER)
 AVRDUDE_FLAGS += $(AVRDUDE_VERBOSE)
 AVRDUDE_FLAGS += $(AVRDUDE_FORCE)
+AVRDUDE_FLAGS += $(AVRDUDE_FUSES)
 
 
 
