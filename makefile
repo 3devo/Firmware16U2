@@ -86,7 +86,7 @@ FORMAT = ihex
 
 
 # Target file name (without extension).
-TARGET = Arduino-usbserial
+TARGET = $(SKU)
 
 
 # Object files directory
@@ -114,7 +114,7 @@ include $(LUFA_PATH)/LUFA/makefile
 
 
 # List C source files here. (C dependencies are automatically generated.)
-SRC = $(TARGET).c                                                     \
+SRC = Arduino-usbserial.c                                                     \
 	  Descriptors.c                                               \
 	  $(LUFA_SRC_USB)                                             \
 	  $(LUFA_SRC_USBCLASS)                                        \
