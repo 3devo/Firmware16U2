@@ -1,6 +1,5 @@
 3Devo USB-to-serial firmware
 ============================
-
 This repository contains the sources for the USB-to-serial firmware
 running in the Devoboard's 16u2. This is mostly a verbatim copy of the
 code used by Arduino, consisting of a simple serial interface combined
@@ -26,3 +25,15 @@ Binaries
 Binaries of the released versions are also stored in this repository,
 but the commits adding them are only present in the tags, not in any
 branch (so see the tags for binaries).
+
+Windows driver
+--------------
+This repository also contains a Windows "driver" for the virtual serial
+port. To install it, download the .inf file (make sure to keep the name
+as it is), right-click this file and select "install". This is not a
+full-fledged driver, it just tells Windows to use the builtin CDC serial
+driver for this USB id.
+
+On Linux and OSX, no installation should be needed, the CDC class
+identifier in the USB descriptor is automatically detected and the
+appropriate driver loaded.
