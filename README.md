@@ -20,12 +20,6 @@ To build the code, run "make". To program it, including setting the
 fuses, run "make program". See the Makefile for details on the fuse
 settings used.
 
-Binaries
---------
-Binaries of the released versions are also stored in this repository,
-but the commits adding them are only present in the tags, not in any
-branch (so see the tags for binaries).
-
 Windows driver
 --------------
 This repository also contains a Windows "driver" for the virtual serial
