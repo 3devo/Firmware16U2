@@ -1,7 +1,14 @@
-;************************************************************
-; Windows USB CDC ACM Setup File
-; Copyright (c) 2000 Microsoft Corporation
-;************************************************************
+;
+; Windows USB serial driver - 3devo B.V.
+;
+; Installs the usb driver for the following devices:
+; - NEXT1.0 filament extruder advanced
+; - NEXT1.0 filament extruder regular
+;
+; Based on https://github.com/abcminiuser/lufa/blob/master/Projects/USBtoSerial/LUFA%20USBtoSerial.inf
+; See also https://support.microsoft.com/en-us/help/837637/how-to-use-or-to-reference-the-usbser.sys-driver-from-universal-serial-bus-usb-modem-.inf-files
+; (though that is meant for Class=Modem, not Class=Ports apparently, see also this thread
+; about that points out this distinction: http://www.osronline.com/ShowThread.cfm?link=124803)
 
 [DefaultInstall]
 CopyINF=3devo.inf
@@ -10,19 +17,15 @@ CopyINF=3devo.inf
 Signature="$Windows NT$"
 Class=Ports
 ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
-Provider=%MFGNAME%
-DriverVer=7/1/2012,10.0.0.0
+Provider=%ManufacturerName%
+DriverPackageDisplayName=%DriverPackageDisplayName%
+DriverVer=03/21/2017,1.0.0.1
 
+; ========== Manufacturer/Models sections ===========
 [Manufacturer]
-%MFGNAME%=DeviceList, NTx86, NTamd64, NTia64
+%ManufacturerName%=DeviceList, NTx86, NTamd64, NTia64
 
-[SourceDisksNames]
-
-[SourceDisksFiles]
-
-[DestinationDirs]
-DefaultDestDir=12
-
+; =================== Installation ===================
 [DriverInstall]
 Include=mdmcpq.inf
 CopyFiles=FakeModemCopyFileSection
@@ -35,27 +38,21 @@ AddService=usbser, 0x00000002, LowerFilter_Service_Inst
 [DriverInstall.AddReg]
 HKR,,EnumPropPages32,,"msports.dll,SerialPortPropPageProvider"
 
-;------------------------------------------------------------------------------
-;  Vendor and Product ID Definitions
-;------------------------------------------------------------------------------
-; Note: One INF file can be used for multiple devices with different VID and PIDs.
-; For each supported device, append ",USB\VID_xxxx&PID_yyyy" to the end of the line.
-;------------------------------------------------------------------------------
+; ================= Devices Section =====================
 [DeviceList]
-%DESCRIPTION%=DriverInstall, USB\VID_16D0&PID_0C5B
+%FE14%=DriverInstall, USB\VID_16D0&PID_0C5B
 
 [DeviceList.NTx86]
-%DESCRIPTION%=DriverInstall, USB\VID_16D0&PID_0C5B
+%FE14%=DriverInstall, USB\VID_16D0&PID_0C5B
 
 [DeviceList.NTamd64]
-%DESCRIPTION%=DriverInstall, USB\VID_16D0&PID_0C5B
+%FE14%=DriverInstall, USB\VID_16D0&PID_0C5B
 
 [DeviceList.NTia64]
-%DESCRIPTION%=DriverInstall, USB\VID_16D0&PID_0C5B
+%FE14%=DriverInstall, USB\VID_16D0&PID_0C5B
 
-;------------------------------------------------------------------------------
-;  String Definitions
-;------------------------------------------------------------------------------
+; =================== Strings ===================
 [Strings]
-MFGNAME="3Devo BV (www.3devo.eu)"
-DESCRIPTION="Next 1.0 filament extruder"
+DriverPackageDisplayName="3devo USB Driver"
+ManufacturerName="3devo B.V. (www.3devo.eu)"
+FE14="Next 1.0 filament extruder"
