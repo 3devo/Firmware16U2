@@ -11,7 +11,7 @@
 ; about that points out this distinction: http://www.osronline.com/ShowThread.cfm?link=124803)
 
 [DefaultInstall]
-CopyINF=3devo.inf
+CopyINF=3devo-driver.inf
 
 [Version]
 Signature="$Windows NT$"
@@ -19,7 +19,7 @@ Class=Ports
 ClassGuid={4D36E978-E325-11CE-BFC1-08002BE10318}
 Provider=%ManufacturerName%
 DriverPackageDisplayName=%DriverPackageDisplayName%
-CatalogFile=3devo.cat
+CatalogFile=3devo-signature.cat
 DriverVer=03/21/2017,1.0.0.1
 
 ; ========== Manufacturer/Models sections ===========

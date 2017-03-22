@@ -11,9 +11,9 @@ REM of Windows contain an older version of the Comodo root, which is not yet sig
 REM all .crt files from the certificates directory fixes this.
 REM This command needs the private key for the actual signing to be present in a pfx file, with the password
 REM set to "password".
-"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool" sign /ac "certificates/AddTrust MS cross.crt" /v /f certificates/3devo.pfx /p password /fd sha256 /tr http://timestamp.comodoca.com/?td=sha256 /td sha256 3devo.cat
+"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool" sign /ac "certificates/AddTrust MS cross.crt" /v /f certificates/3devo.pfx /p password /fd sha256 /tr http://timestamp.comodoca.com/?td=sha256 /td sha256 3devo-signature.cat
 
 REM Verify if this signature chain is ok for kernel mode drivers
-"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool" verify /kp /v 3devo.cat
+"C:\Program Files (x86)\Windows Kits\10\bin\x86\signtool" verify /kp /v 3devo-signature.cat
 
 pause 
