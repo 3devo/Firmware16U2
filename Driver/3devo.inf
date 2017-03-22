@@ -4,7 +4,7 @@
 ;************************************************************
 
 [DefaultInstall]
-CopyINF="3Devo serial driver.inf"
+CopyINF=3devo.inf
 
 [Version]
 Signature="$Windows NT$"
