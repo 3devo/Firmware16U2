@@ -44,8 +44,6 @@ MCU_AVRDUDE = atmega16u2
 #   to set PID and product descriptor string
 USB_VID = 0x16D0
 USB_PID = 0x0C5B
-SKU = FEN1V1R
-#SKU = FEN1V1A
 
 # Target board (see library "Board Types" documentation, NONE for projects not requiring
 # LUFA board drivers). If USER is selected, put custom board drivers in a directory called
@@ -86,7 +84,7 @@ FORMAT = ihex
 
 
 # Target file name (without extension).
-TARGET = $(SKU)
+TARGET = Firmware16U2
 
 
 # Object files directory
@@ -180,7 +178,6 @@ CDEFS  = -DF_CPU=$(F_CPU)UL
 CDEFS += -DF_CLOCK=$(F_CLOCK)UL
 CDEFS += -DUSB_VID=$(USB_VID)
 CDEFS += -DUSB_PID=$(USB_PID)
-CDEFS += -DSKU=$(SKU)
 CDEFS += -DBOARD=BOARD_$(BOARD)
 CDEFS += $(LUFA_OPTS)
 CDEFS += -DAVR_RESET_LINE_PORT="PORTD"

@@ -215,7 +215,7 @@ const USB_Descriptor_String_t PROGMEM ManufacturerString =
  */
 #define STRINGIFY(x) XSTRINGIFY(x)
 #define XSTRINGIFY(x) #x
-#define PRODUCT_STRING L"Next 1.0 filament extruder (" STRINGIFY(SKU) ")"
+#define PRODUCT_STRING L"Next 1.0 filament extruder"
 const USB_Descriptor_String_t PROGMEM ProductString =
 {
 	.Header                 = {.Size = USB_STRING_LEN(sizeof(PRODUCT_STRING)/sizeof(wchar_t)), .Type = DTYPE_String},
